@@ -18,6 +18,14 @@
   </head>
   <body>
     <div class="page-shell">
+      <header class="mobile-appbar">
+        <div class="mobile-appbar__left">
+          <button class="icon-button" type="button" aria-label="Open navigation">≡</button>
+          <span class="mobile-appbar__title">Dr. Ramdin's Polyclinic</span>
+        </div>
+        <div class="mobile-appbar__avatar" aria-hidden="true">DRP</div>
+      </header>
+
       <header class="site-header">
         <a class="brand" href="#home">
           <span class="brand-kicker">Since 1988</span>
@@ -62,6 +70,31 @@
                 <dd>Specialists, imaging, and pathology</dd>
               </div>
             </dl>
+
+            <div class="mobile-service-rail">
+              <div class="mobile-service-rail__header">
+                <p class="eyebrow eyebrow-muted">Core Services</p>
+                <a href="#specialties">View all</a>
+              </div>
+              <div class="mobile-service-rail__cards">
+                <article class="mobile-service-card">
+                  <span>Obstetrician</span>
+                  <small>Maternal & fetal care</small>
+                </article>
+                <article class="mobile-service-card">
+                  <span>General Physician</span>
+                  <small>Holistic diagnosis</small>
+                </article>
+                <article class="mobile-service-card">
+                  <span>Diagnostics</span>
+                  <small>Advanced lab tests</small>
+                </article>
+                <article class="mobile-service-card">
+                  <span>Preventative</span>
+                  <small>Annual screenings</small>
+                </article>
+              </div>
+            </div>
           </div>
 
           <div class="hero-visual reveal">
@@ -313,6 +346,18 @@
             </p>
           </div>
 
+          <article class="patient-mobile-hero reveal">
+            <div>
+              <p class="eyebrow eyebrow-dark">Current Status: Open</p>
+              <h3>Consultation Hours</h3>
+            </div>
+            <dl class="patient-mobile-hours">
+              <div><dt>Monday - Saturday</dt><dd>08:00 AM - 09:00 PM</dd></div>
+              <div><dt>Sunday</dt><dd>09:00 AM - 01:00 PM</dd></div>
+              <div><dt>Emergency</dt><dd>24/7 diagnostics</dd></div>
+            </dl>
+          </article>
+
           <div class="patient-grid">
             <article class="surface-card reveal">
               <h3>Consultation Hours</h3>
@@ -367,6 +412,17 @@
                     <option>Physiotherapy</option>
                   </select>
                 </label>
+                <div class="appointment-pills" aria-label="Quick specialty choices">
+                  <button type="button" class="appointment-pill is-active" data-department-pill="General Physician">
+                    General Checkup
+                  </button>
+                  <button type="button" class="appointment-pill" data-department-pill="Obstetrician & Gynaecologist">
+                    Women's Health
+                  </button>
+                  <button type="button" class="appointment-pill" data-department-pill="Diagnostics">
+                    Laboratory
+                  </button>
+                </div>
                 <label>
                   Preferred Date
                   <input name="date" type="date" required />
@@ -430,6 +486,21 @@
           <a href="#patient-info">Patient Info</a>
         </div>
       </footer>
+
+      <nav class="mobile-tabbar" aria-label="Mobile">
+        <a href="#home" data-nav-link class="mobile-tabbar__item is-active">
+          <span>Home</span>
+        </a>
+        <a href="#patient-info" data-nav-link class="mobile-tabbar__item">
+          <span>Appointments</span>
+        </a>
+        <a href="#specialties" data-nav-link class="mobile-tabbar__item">
+          <span>Services</span>
+        </a>
+        <a href="#diagnostics" data-nav-link class="mobile-tabbar__item">
+          <span>Diagnostics</span>
+        </a>
+      </nav>
     </div>
 
     <script src="./script.js"></script>

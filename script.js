@@ -7,6 +7,7 @@ const labTabs = Array.from(document.querySelectorAll("[data-lab-tab]"));
 const labPanels = Array.from(document.querySelectorAll("[data-lab-panel]"));
 const form = document.getElementById("appointment-form");
 const feedback = document.getElementById("form-feedback");
+const departmentPills = Array.from(document.querySelectorAll("[data-department-pill]"));
 
 const sectionObserver = new IntersectionObserver(
   (entries) => {
@@ -86,5 +87,21 @@ if (form && feedback) {
 
     feedback.textContent = `Request captured for ${name} in ${department} on ${date}. A coordinator will follow up to confirm the slot.`;
     form.reset();
+  });
+}
+
+if (form && departmentPills.length > 0) {
+  const departmentSelect = form.querySelector('select[name="department"]');
+
+  departmentPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      departmentPills.forEach((item) => {
+        item.classList.toggle("is-active", item === pill);
+      });
+
+      if (departmentSelect) {
+        departmentSelect.value = pill.dataset.departmentPill;
+      }
+    });
   });
 }
