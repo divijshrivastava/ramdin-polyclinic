@@ -756,6 +756,10 @@ address {
   .footer-links {
     text-align: left;
   }
+
+  .bento-wide {
+    grid-column: auto;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1153,6 +1157,7 @@ address {
   }
 
   .bento-wide {
+    grid-column: auto;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
     color: #fff;
   }
