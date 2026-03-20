@@ -12,6 +12,12 @@ const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuToggle = document.querySelector("[data-mobile-menu-toggle]");
 const mobileMenuClosers = Array.from(document.querySelectorAll("[data-mobile-menu-close]"));
 
+const setActiveNav = (id) => {
+  navLinks.forEach((link) => {
+    link.classList.toggle("is-active", link.getAttribute("href") === id);
+  });
+};
+
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -19,10 +25,7 @@ const sectionObserver = new IntersectionObserver(
         return;
       }
 
-      const id = `#${entry.target.id}`;
-      navLinks.forEach((link) => {
-        link.classList.toggle("is-active", link.getAttribute("href") === id);
-      });
+      setActiveNav(`#${entry.target.id}`);
     });
   },
   {
@@ -48,6 +51,16 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealItems.forEach((item) => revealObserver.observe(item));
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    const targetId = link.getAttribute("href");
+
+    if (targetId?.startsWith("#")) {
+      setActiveNav(targetId);
+    }
+  });
+});
 
 const setMobileMenuState = (isOpen) => {
   if (!mobileMenu || !mobileMenuToggle) {

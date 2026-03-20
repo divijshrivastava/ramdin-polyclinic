@@ -191,6 +191,10 @@ h3 {
   padding: 5.5rem 0;
 }
 
+[data-section] {
+  scroll-margin-top: 7rem;
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -904,6 +908,10 @@ address {
   .section {
     padding-top: 4rem;
     padding-bottom: 4rem;
+  }
+
+  [data-section] {
+    scroll-margin-top: 5.75rem;
   }
 
   .section {
