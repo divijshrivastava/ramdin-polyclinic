@@ -3,16 +3,12 @@
   --surface: #ffffff;
   --surface-low: #f3f4f5;
   --surface-high: #e7e8e9;
-  --surface-highest: #e1e3e4;
   --text: #191c1d;
   --muted: #414750;
   --outline: rgba(114, 119, 130, 0.2);
   --primary: #004277;
   --primary-strong: #005a9e;
-  --secondary: #beebe9;
-  --secondary-text: #426b6b;
   --tertiary: #004a44;
-  --tertiary-soft: #76f7e8;
   --warm: #ffdad6;
   --shadow: 0 24px 60px rgba(25, 28, 29, 0.06);
   --radius-lg: 1rem;
@@ -31,9 +27,9 @@ html {
 }
 
 body {
-  overflow-x: hidden;
   margin: 0;
-  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  font-family: var(--font-body), sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top right, rgba(118, 247, 232, 0.22), transparent 26%),
@@ -55,6 +51,10 @@ button,
 input,
 select {
   font: inherit;
+}
+
+main {
+  display: block;
 }
 
 .page-shell {
@@ -108,10 +108,6 @@ select {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 700;
-}
-
-.brand-kicker,
-.eyebrow {
   color: var(--tertiary);
 }
 
@@ -119,7 +115,7 @@ select {
 h1,
 h2,
 h3 {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display), sans-serif;
 }
 
 .brand-name {
@@ -259,7 +255,7 @@ address {
 .hero-metrics dt,
 .journey-grid span {
   display: block;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 2rem;
   font-weight: 800;
   color: var(--primary);
@@ -267,7 +263,7 @@ address {
 
 .impact-stat {
   display: block;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 3rem;
   font-weight: 800;
   color: #fff;
@@ -374,7 +370,7 @@ address {
 
 .story-author strong,
 .patient-quote strong {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1rem;
   color: var(--primary);
 }
@@ -547,9 +543,9 @@ address {
   padding: 0.9rem 0;
 }
 
-.bento-card li+li,
-.contact-list li+li,
-.lab-panel li+li {
+.bento-card li + li,
+.contact-list li + li,
+.lab-panel li + li {
   border-top: 1px solid var(--outline);
 }
 
@@ -613,7 +609,7 @@ address {
   font-size: clamp(1.8rem, 2.5vw, 2.6rem);
   line-height: 1.05;
   letter-spacing: -0.04em;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display), sans-serif;
 }
 
 .patient-stories__grid {
@@ -645,6 +641,13 @@ address {
 .hours-list dt,
 .step-list li::marker {
   font-weight: 700;
+}
+
+.hours-list dt,
+.hours-list dd,
+.patient-mobile-hours dt,
+.patient-mobile-hours dd {
+  margin: 0;
 }
 
 .check-list li,
@@ -742,7 +745,7 @@ address {
 
 .map-overlay span {
   display: block;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.2rem;
   font-weight: 800;
   color: var(--primary);
@@ -801,12 +804,19 @@ address {
   transform: translateY(0);
 }
 
-.is-hidden {
-  display: none;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 1024px) {
-
   .site-header,
   .hero,
   .mission-grid,
@@ -840,14 +850,6 @@ address {
 
   .hero-metrics {
     grid-template-columns: 1fr;
-  }
-
-  .compact-grid {
-    display: grid;
-  }
-
-  .journey-grid {
-    display: grid;
   }
 
   .lab-menu-header {
@@ -893,7 +895,7 @@ address {
   }
 
   .mobile-appbar__title {
-    font-family: "Manrope", sans-serif;
+    font-family: var(--font-display), sans-serif;
     font-size: 1rem;
     font-weight: 800;
     color: var(--primary);
@@ -979,7 +981,7 @@ address {
     border-radius: 1rem;
     background: var(--surface-low);
     color: var(--primary);
-    font-family: "Manrope", sans-serif;
+    font-family: var(--font-display), sans-serif;
     font-weight: 800;
   }
 
@@ -997,16 +999,6 @@ address {
   .section,
   .site-footer {
     width: min(calc(100% - 1.25rem), var(--content-width));
-  }
-
-  .site-header {
-    top: 0.5rem;
-    padding: 1rem;
-  }
-
-  .site-nav {
-    gap: 0.8rem;
-    font-size: 0.95rem;
   }
 
   .hero,
@@ -1042,9 +1034,12 @@ address {
   }
 
   .hero-panel {
+    position: relative;
+    min-height: 27rem;
     padding: 0;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
     overflow: hidden;
+    border-radius: 2.25rem;
   }
 
   .hero-image-wrap {
@@ -1059,12 +1054,6 @@ address {
     right: 1.25rem;
     bottom: 1.25rem;
     padding: 0;
-  }
-
-  .hero-panel {
-    position: relative;
-    min-height: 27rem;
-    border-radius: 2.25rem;
   }
 
   .hero-note span,
@@ -1193,7 +1182,7 @@ address {
 
   .mobile-service-card span {
     display: block;
-    font-family: "Manrope", sans-serif;
+    font-family: var(--font-display), sans-serif;
     font-weight: 800;
     margin-bottom: 0.25rem;
   }
@@ -1367,11 +1356,10 @@ address {
 
   .patient-mobile-hours dt,
   .patient-mobile-hours dd {
-    margin: 0;
     font-size: 0.92rem;
   }
 
-  .patient-grid> :first-child {
+  .patient-grid > :first-child {
     display: none;
   }
 
