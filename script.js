@@ -8,6 +8,9 @@ const labPanels = Array.from(document.querySelectorAll("[data-lab-panel]"));
 const form = document.getElementById("appointment-form");
 const feedback = document.getElementById("form-feedback");
 const departmentPills = Array.from(document.querySelectorAll("[data-department-pill]"));
+const mobileMenu = document.getElementById("mobile-menu");
+const mobileMenuToggle = document.querySelector("[data-mobile-menu-toggle]");
+const mobileMenuClosers = Array.from(document.querySelectorAll("[data-mobile-menu-close]"));
 
 const sectionObserver = new IntersectionObserver(
   (entries) => {
@@ -45,6 +48,42 @@ const revealObserver = new IntersectionObserver(
 );
 
 revealItems.forEach((item) => revealObserver.observe(item));
+
+const setMobileMenuState = (isOpen) => {
+  if (!mobileMenu || !mobileMenuToggle) {
+    return;
+  }
+
+  mobileMenu.classList.toggle("is-open", isOpen);
+  mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+  mobileMenuToggle.setAttribute("aria-expanded", String(isOpen));
+  document.body.classList.toggle("mobile-menu-open", isOpen);
+
+  mobileMenuClosers.forEach((item) => {
+    if (item.classList.contains("mobile-menu-backdrop")) {
+      item.hidden = !isOpen;
+      item.classList.toggle("is-open", isOpen);
+    }
+  });
+};
+
+if (mobileMenu && mobileMenuToggle) {
+  mobileMenuToggle.addEventListener("click", () => {
+    setMobileMenuState(!mobileMenu.classList.contains("is-open"));
+  });
+
+  mobileMenuClosers.forEach((item) => {
+    item.addEventListener("click", () => {
+      setMobileMenuState(false);
+    });
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMobileMenuState(false);
+    }
+  });
+}
 
 specialtyFilters.forEach((filterButton) => {
   filterButton.addEventListener("click", () => {
