@@ -232,7 +232,9 @@ address {
 .diagnostic-bento,
 .journey-grid,
 .patient-grid,
-.appointment-grid {
+.appointment-grid,
+.stories-grid,
+.patient-stories__grid {
   display: grid;
   gap: 1.5rem;
 }
@@ -255,13 +257,20 @@ address {
 }
 
 .hero-metrics dt,
-.impact-stat,
 .journey-grid span {
   display: block;
   font-family: "Manrope", sans-serif;
   font-size: 2rem;
   font-weight: 800;
   color: var(--primary);
+}
+
+.impact-stat {
+  display: block;
+  font-family: "Manrope", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
 }
 
 .glass-card,
@@ -314,6 +323,65 @@ address {
   display: grid;
   grid-template-columns: 1.4fr 0.7fr;
   gap: 1.5rem;
+}
+
+.stories-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.story-card,
+.patient-quote {
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.story-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.story-card--featured {
+  background: linear-gradient(160deg, var(--primary) 0%, var(--primary-strong) 100%);
+}
+
+.story-card--featured p,
+.story-card--featured .story-author span,
+.story-card--featured .story-author strong {
+  color: #fff;
+}
+
+.story-stars {
+  color: #d9a421;
+  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+}
+
+.story-card p,
+.patient-quote p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 1.03rem;
+}
+
+.story-author,
+.patient-stories__header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.story-author strong,
+.patient-quote strong {
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.story-author span {
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 .mission-copy,
@@ -536,6 +604,29 @@ address {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.patient-stories {
+  margin-top: 1.5rem;
+}
+
+.patient-stories__header h3 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-family: "Manrope", sans-serif;
+}
+
+.patient-stories__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.patient-quote {
+  display: grid;
+  gap: 0.9rem;
+  background: var(--surface-low);
+}
+
 .hours-list,
 .step-list {
   display: grid;
@@ -719,12 +810,14 @@ address {
   .site-header,
   .hero,
   .mission-grid,
+  .stories-grid,
   .section-heading,
   .specialty-layout,
   .compact-grid,
   .diagnostic-bento,
   .journey-grid,
   .patient-grid,
+  .patient-stories__grid,
   .appointment-grid,
   .site-footer {
     grid-template-columns: minmax(0, 1fr);
@@ -985,8 +1078,8 @@ address {
   }
 
   .hero h1 {
-    font-size: 2.35rem;
-    max-width: 10ch;
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    max-width: 100%;
   }
 
   .hero-copy .eyebrow {
@@ -1023,6 +1116,28 @@ address {
 
   .mission-grid {
     gap: 0.85rem;
+  }
+
+  .stories-section {
+    padding-top: 2rem;
+  }
+
+  .stories-grid,
+  .patient-stories__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .story-card,
+  .patient-quote {
+    padding: 1.35rem;
+    border-radius: 1.35rem;
+  }
+
+  .story-card p,
+  .patient-quote p {
+    font-size: 0.97rem;
   }
 
   .mission-copy {
@@ -1258,6 +1373,14 @@ address {
 
   .patient-grid> :first-child {
     display: none;
+  }
+
+  .patient-stories {
+    margin-top: 1rem;
+  }
+
+  .patient-stories__header h3 {
+    font-size: 1.65rem;
   }
 
   .appointment-pills {
