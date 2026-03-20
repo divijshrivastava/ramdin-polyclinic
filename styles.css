@@ -570,17 +570,21 @@ address {
 .appointment-form {
   display: grid;
   gap: 1rem;
+  min-width: 0;
 }
 
 .appointment-form label {
   display: grid;
   gap: 0.5rem;
   font-weight: 700;
+  min-width: 0;
 }
 
 .appointment-form input,
 .appointment-form select {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   padding: 0.95rem 1rem;
   border: 1px solid transparent;
   border-radius: 1rem;
@@ -673,9 +677,11 @@ address {
 
 .appointment-pills {
   display: none;
+  min-width: 0;
 }
 
 .appointment-pill {
+  min-width: 0;
   border: 1px solid var(--outline);
   background: var(--surface);
   color: var(--primary);
@@ -683,6 +689,8 @@ address {
   border-radius: 999px;
   font-weight: 700;
   cursor: pointer;
+  white-space: normal;
+  text-align: center;
 }
 
 .appointment-pill.is-active {
@@ -1250,6 +1258,28 @@ address {
     gap: 0.6rem;
   }
 
+  .appointment-pill {
+    flex: 1 1 11rem;
+  }
+
+  .appointment-form input,
+  .appointment-form select {
+    font-size: 16px;
+  }
+
+  .appointment-form input[type="date"] {
+    display: block;
+    min-height: 4.25rem;
+  }
+
+  .appointment-form label,
+  .surface-card,
+  .contact-panel,
+  .mobile-tabbar,
+  .mobile-tabbar__item {
+    min-width: 0;
+  }
+
   .contact-list li {
     flex-direction: column;
     align-items: flex-start;
@@ -1289,6 +1319,9 @@ address {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .mobile-tabbar__item.is-active {
